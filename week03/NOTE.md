@@ -74,3 +74,25 @@
             g. try语句：有try、catch和finally三段结构组成，try里面的不是block语句，而是由try语句定义的
                 [[type]]：return，[[value]]：未知，[[target]]：label
     2.3 声明
+        预处理：
+            a. 在一段代码执行之前，JS引擎会对代码本身做一次预先处理
+            b. 所有的声明都有预处理机制，都能把一个变量变成局部变量，const在声明之前使用的话会发生报错，会被try catch捕获处理
+        作用域:
+            a. 早期var和function的作用域都在整个函数体内
+            b. const作用域只在其所在的花括号内
+3. JS结构化
+    3.1 执行粒度划分
+        a. 宏任务：传给JS引擎的任务，一种JS语言讨论的最大粒度范围
+        b. 微任务（Promise）：在JS引擎内部的任务，一个有Promise来产生的
+        c. 函数调用（Execution Context）：
+        d. 语句/声明（Completion Record）：
+        e. 表达式（Reference）：
+        f. 直接量/变量/this ...
+    3.2 事件循环
+        有三部分组成：获取代码、执行代码、等待（一短时间或一个事件），每个部分都会有各自的一个锁
+    3.3 函数调用
+        每个函数都有一个闭包
+        Realm:
+            a. 在一个JS引擎的实例中，所有的内置对象会被放进一个Realm里面
+            b. 根据外部的条件进行创建
+            c. 不同的实例之间，相互传递对象，传递过来后的prototype是不一致的
