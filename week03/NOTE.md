@@ -48,4 +48,29 @@
 
 2. JS语句
     2.1 运行时Runtime基本概念
-
+        2.1.1 Completion Record
+            组成结构：
+            1. 类型[[type]]：normal、 break、 continue、 return、 throw
+            2. 返回值[[value]]：基本类型
+            3. [[target]]：label ==> 一般break和continue后面会带有target
+    2.2 简单语句和复合语句
+        2.2.1 简单语句
+            a. 表达式语句：完全有表达式组成，最后加上一个分号
+            b. 空语句：单独的一个分号，只是为了满足语言的完备性
+            c. 调试语句：debugger关键字加上一个分号，当在调试的时候，专门会触发一个debugger的断点，但在实际运行的时候不会发生任何作用
+            d. 抛出（throw）语句：会抛出一个异常，通过throw关键字加上一个表达式来抛出
+            e. continue和break语句：和循环语句相匹配，continue表示结束当次循环，之后的循环继续，而break结束整个循环
+                后面可以加上label，可以实现跳出多层的循环，以此来节省很多if语句的判断和逻辑处理
+                [[type]]：break contiue，[[value]]：未知，[[target]]：label
+            f. return语句：一定在函数中使用，返回函数的值
+        2.2.2 复合语句
+            a. block语句：一对花括号中间有一个语句列表
+                [[type]]：normal，[[value]]和[[target]]不明
+            b. 条件（if）语句：一种分支结构
+            c. switch语句：一种多分支结构，不建议使用，建议使用条件语句来取代
+            d. 迭代（Iteration）语句：while循环、do while循环、for循环、for await循环等
+            e. with语句：一般在JS中不太或者拒绝使用
+            f. labelled语句：在简单语句或复合语句前面加上一个label，相当于给一个语句取个名字
+            g. try语句：有try、catch和finally三段结构组成，try里面的不是block语句，而是由try语句定义的
+                [[type]]：return，[[value]]：未知，[[target]]：label
+    2.3 声明
