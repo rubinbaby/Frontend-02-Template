@@ -16,9 +16,9 @@
 ## 3. HTTP请求
   ### 3.1 HTTP协议解析
   1. 七层网络模型
-  HTTP（应用、表示、会话），TCP（传输），Internet（网络），4G/5G/Wi-Fi（数据链路、物理层），其中HTTP对应nodejs中的require('http')，Internet对应require('net')
+  HTTP（应用、表示、会话），TCP（传输），Internet（网络），4G/5G/Wi-Fi（数据链路、物理层），其中HTTP对应nodejs中的require('http')，Internet对应require('net')
   2. TCP与IP
-  TCP层传输数据使用的是流（一种没有明显的分割单位，但前后的顺序保证正确），根据网卡上的端口把相应的数据传给对应的应用程序，所依赖的nodejs库是require('net')包，TCP通过一个个数据包来进行传输，根据网络中间设备的传输能力来决定每个传输包的大小，而通过IP地址就可以确定一个数据包的传输位置（从哪到哪），IP协议的底层库需要调用C++中的libnet（负责构造IP包并且发送）和labpcap（从网卡抓取流经的IP包）
+  TCP层传输数据使用的是流（一种没有明显的分割单位，但前后的顺序保证正确），根据网卡上的端口把相应的数据传给对应的应用程序，所依赖的nodejs库是require('net')包，TCP通过一个个数据包来进行传输，根据网络中间设备的传输能力来决定每个传输包的大小，而通过IP地址就可以确定一个数据包的传输位置（从哪到哪），IP协议的底层库需要调用C++中的libnet（负责构造IP包并且发送）和labpcap（从网卡抓取流经的IP包）
   3. HTTP
   一个request对应一个response
   request格式 ==> request line（method: get/post/put/options）, headers, body
