@@ -1,0 +1,3 @@
+为什么 first-letter 可以设置 float 之类的，而 first-line 不行呢？
+
+答：first-line已经完成了排版之后的结果，只能用于块级元素，如果修改float属性值，就会导致页面排版发生变化，而对于first-letter，只会对首字符做出必要的元素修饰，不会造成整体页面布局的影响。

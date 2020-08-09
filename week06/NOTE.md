@@ -28,43 +28,64 @@
   ### 1.4 收集标准
   1. https://w3.org/TR/
   2. 通过执行脚本进行CSS标准自动抓取
-  ### 1.5 计算选择器与元素匹配
-  1. 根据选择器的类型和元素属性来计算其是否与当前元素相匹配
-  2. 在真实浏览器中，需要处理复合选择器
-  ### 1.6 生成computed属性
-  1. 一旦选择匹配，就会把选择器运用到元素上，形成computed属性
-  ### 1.7 specificity的计算逻辑
-  1. 优先级：inline CSS > id > class > tag name，specificity是一个四元祖，越左边权重越高（也就是只要高位能够比较出来，就不考虑低位）
-  2. CSS规则是根据specificity和后来优先规则覆盖
-  3. 一个CSS规则的specificity根据包含的简单选择器相加而成
-## 2. 排版
-  ### 2.1 根据浏览器属性进行排版
-   - flex-direction:row
-      - Main：width，x，left，right
-      - Cross：height，y，top，bottom
-   - flex-direction:column
-      - Main：height，y，top，bottom
-      - Cross：width，x，left，right
-  ### 2.2 收集元素进行
-   - 分行
-      - 根据主轴尺寸，把元素分进行（hang）
-      - 若设置了no-wrap，则强行分配进第一行
-  ### 2.3 计算主轴
-   - 计算主轴方向
-      - 找出所有Flex元素
-      - 把主轴方向的剩余尺寸按比例分配给这些元素
-      - 当剩余空间为负数的时候，所有Flex元素设置为0，剩余元素等比例压缩
-  ### 2.4 计算交叉轴
-   - 计算交叉轴方向
-      - 根据每一行中最大元素尺寸计算行高
-      - 根据行高flex-align和item-align，确定元素具体位置
-## 3. 渲染
-  ### 3.1 绘制单个元素
-  1. 如果把单个元素绘制成一张图片，需要依赖一个图形环境，比如采用npm包images
-  2. 单个元素会绘制到一个viewport上
-  3. 与绘制相关的属性包含background-color，border，background-image等，不过对于gradient属性，需要webGL库来实现
-  ### 3.2 绘制DOM树
-  1. 采用递归的方式，调用单个元素绘制的方法进行绘制整个DOM树
-  2. 对于简易的浏览器，一些不需要绘制的节点进行了忽略处理
-  3. 在实际浏览器中，文字绘制是难点，需要依赖各种字体库，把字体变成图片来渲染
-  4. 在实际浏览器中，还会对一些图层进行compositing
+## 2. CSS选择器
+  ### 2.1 选择器语法
+   - 简单选择器
+      - *（通用选择器）
+      - div svg|a（类型选择器）
+      - .cls（class选择器）
+      - #id（ID选择器：必须严格）
+      - [attr=value]（属性选择器：功能强大）
+      - :hover（伪类选择器）
+      - ::before（伪元素选择器）
+   - 复合（combined）选择器
+      - <简单选择器><简单选择器><简单选择器>
+      - 另外，注意*或者div必须写在最前面
+   - 复杂选择器
+      - <复合选择器>" "<复合选择器>（子孙选择器）
+      - <复合选择器>">"<复合选择器>（父子选择器，直接关系）
+      - <复合选择器>"~"<复合选择器>（邻接关系）
+      - <复合选择器>"+"<复合选择器>
+      - <复合选择器>"||"<复合选择器>
+      - 逗号之间是或的关系，可以看做是多个选择器组成的一个列表
+  ### 2.2 伪类
+   - 链接/行为
+      - :any-link（匹配所有的超链接）
+      - :link（匹配所有未访问过的超链接）:visited（匹配所有已访问过的超链接）：一旦使用这两个，就无法修改颜色以外的属性
+      - :hover（鼠标挪上去以后所处的状态）
+      - :active（激活状态）
+      - :focus（焦点在的状况）
+      - :target（链接到当前目标，供锚点的a标签使用的）
+   - 树结构
+      - :empty 表示这个元素是否有子元素
+      - :nth-child() 表示这个元素是父元素的第几个child，其中括号里写even/odd
+      - :nth-last-child() 和nth-child()类似，只不过是从后往前
+      - :first-child :last-child :only-child
+   - 逻辑型
+      - :not伪类，只支持里面写简单选择器的序列
+      - :where :has
+  ### 2.3 伪元素
+   - ::before ::after 表示在元素内容的前面和后面插入一个伪元素
+      - declaration里面可以写content属性
+      - 写了content属性后，可以像一个真正的DOM元素来生成盒，参与后续的排版和渲染
+   - ::first-line 可用属性如下：
+      - font系列
+      - color系列
+      - background系列
+      - word-spacing
+      - letter-spacing
+      - text-decoration
+      - text-transform
+      - line-height
+   - ::first-letter 可用属性如下：
+      - font系列
+      - color系列
+      - background系列
+      - text-decoration
+      - text-transform
+      - letter-spacing
+      - word-spacing
+      - line-height
+      - float
+      - vertical-align
+      - 盒模型系列：margin，padding，border
