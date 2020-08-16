@@ -47,62 +47,34 @@
       - 根据行高flex-align和item-align，确定元素具体位置
 ## 2. CSS动画与绘制
   ### 2.1 动画
-   - 简单选择器
-      - *（通用选择器）
-      - div svg|a（类型选择器）
-      - .cls（class选择器）
-      - #id（ID选择器：必须严格）
-      - [attr=value]（属性选择器：功能强大）
-      - :hover（伪类选择器）
-      - ::before（伪元素选择器）
-   - 复合（combined）选择器
-      - <简单选择器><简单选择器><简单选择器>
-      - 另外，注意*或者div必须写在最前面
-   - 复杂选择器
-      - <复合选择器>" "<复合选择器>（子孙选择器）
-      - <复合选择器>">"<复合选择器>（父子选择器，直接关系）
-      - <复合选择器>"~"<复合选择器>（邻接关系）
-      - <复合选择器>"+"<复合选择器>
-      - <复合选择器>"||"<复合选择器>
-      - 逗号之间是或的关系，可以看做是多个选择器组成的一个列表
-  ### 2.2 伪类
-   - 链接/行为
-      - :any-link（匹配所有的超链接）
-      - :link（匹配所有未访问过的超链接）:visited（匹配所有已访问过的超链接）：一旦使用这两个，就无法修改颜色以外的属性
-      - :hover（鼠标挪上去以后所处的状态）
-      - :active（激活状态）
-      - :focus（焦点在的状况）
-      - :target（链接到当前目标，供锚点的a标签使用的）
-   - 树结构
-      - :empty 表示这个元素是否有子元素
-      - :nth-child() 表示这个元素是父元素的第几个child，其中括号里写even/odd
-      - :nth-last-child() 和nth-child()类似，只不过是从后往前
-      - :first-child :last-child :only-child
-   - 逻辑型
-      - :not伪类，只支持里面写简单选择器的序列
-      - :where :has
-  ### 2.3 伪元素
-   - ::before ::after 表示在元素内容的前面和后面插入一个伪元素
-      - declaration里面可以写content属性
-      - 写了content属性后，可以像一个真正的DOM元素来生成盒，参与后续的排版和渲染
-   - ::first-line 可用属性如下：
-      - font系列
-      - color系列
-      - background系列
-      - word-spacing
-      - letter-spacing
+   - @keyframes定义
+      - 百分比（0%-100%）
+      - from&to，from相当于0%，to相当于100%
+   - animation：使用
+      - animation-name动画名字
+      - animation-duration动画时长
+      - animation-timing-function动画时间曲线
+      - animation-delay动画开始前的延迟
+      - animation-iteration-count动画的播放次数
+      - animation-direction动画方向
+   - transition
+      - transition-property要变换的属性
+      - transition-duration变换的时长
+      - transition-timing-function时间曲线（和三次贝塞尔曲线有关）
+      - transition-delay变换延迟
+  ### 2.2 颜色
+   - CMYK与RGB
+   - HSL与HSV
+      - H（hue）色相
+      - S表示纯度，值越高越鲜艳
+      - L表示亮度，V（value）表示明度
+  ### 2.3 绘制
+   - 几何图形
+      - border
+      - box-shadow
+      - border-radius
+   - 文字
+      - font
       - text-decoration
-      - text-transform
-      - line-height
-   - ::first-letter 可用属性如下：
-      - font系列
-      - color系列
-      - background系列
-      - text-decoration
-      - text-transform
-      - letter-spacing
-      - word-spacing
-      - line-height
-      - float
-      - vertical-align
-      - 盒模型系列：margin，padding，border
+   - 位图
+      - background-image
