@@ -9,10 +9,8 @@
 
     // ECMA 262
     {
-        let js = new Set();
-        let objects = ["globalThis", "console", "BigInt", "BigInt64Array", "BigUint64Array", "Infinity", "NaN", "undefined", "eval", ""];
-        objects.forEach(o => js.add(o));
-        names = names.filter(e => !js.has(e));
+        let objects = ["globalThis", "Infinity", "NaN", "undefined", "eval", "isFinite", "isNaN", "parseFloat", "parseInt", "decodeURI", "decodeURIComponent", "encodeURI", "encodeURIComponent", "Array", "ArrayBuffer", "BigInt", "BigInt64Array", "BigUint64Array", "Boolean", "DataView", "Date", "Error", "EvalError", "Float32Array", "Float64Array", "Function", "Int8Array", "Int16Array", "Int32Array", "Map", "Number", "Object", "Promise", "Proxy", "RangeError", "ReferenceError", "RegExp", "Set", "SharedArrayBuffer", "String", "Symbol", "SyntaxError", "TypeError", "Uint8Array", "Uint8ClampedArray", "Uint16Array", "Uint32Array", "URIError", "WeakMap", "WeakSet", "Atomics", "JSON", "Math", "Reflect",    "console", "escape", "unescape"];
+        names = filterOut(names, objects);
     }
 
     // Subclass of Node
@@ -32,21 +30,21 @@
 
     // https://html.spec.whatwg.org/#window
     {
-        let names = Object.getOwnPropertyNames(window);
-        let js = new Set();
-        let objects = ["BigInt", "BigInt64Array", "BigUint64Array", "Infinity", "NaN", "undefined", "eval", "isFinite", "isNaN", ""];
-        objects.forEach(o => js.add(o));
-        names = names.filter(e => !js.has(e));
-        names = names.filter(e => {
-            try{
-                return !(window[e].prototype instanceof Node);
-            } catch(err) {
-                return true;
-            }
-        }).filter(e => e!="Node");
+        // let names = Object.getOwnPropertyNames(window);
+        // let js = new Set();
+        // let objects = ["BigInt", "BigInt64Array", "BigUint64Array", "Infinity", "NaN", "undefined", "eval", "isFinite", "isNaN", ""];
+        // objects.forEach(o => js.add(o));
+        // names = names.filter(e => !js.has(e));
+        // names = names.filter(e => {
+        //     try{
+        //         return !(window[e].prototype instanceof Node);
+        //     } catch(err) {
+        //         return true;
+        //     }
+        // }).filter(e => e!="Node");
 
         let windowprops = new Set();
-        objects = ["window", "self", "document", "name", "location", "history", "customElements", "locationbar", "menubar", ""];
+        objects = ["window", "self", "document", "name", "location", "history", "customElements", "locationbar", "menubar", "personalbar", "scrollbars", "statusbar", "toolbar", "status", "close", "closed", "stop", "focus", "blur", "frames", "length", "top", "opener", "parent", "frameElement", "open", "navigator", "applicationCache", "originIsolated", "alert", "confirm", "prompt", "print", "postMessage"];
         objects.forEach(o => windowprops.add(o));
         names = names.filter(e => !windowprops.has(e));
     }
@@ -54,7 +52,7 @@
     // https://html.spec.whatwg.org/
     {
         let interfaces = new Set();
-        objects = ["ApplicationCache", "AudioTrack", "AudioTrackList", "BarProp", "BeforeUnloadEvent", "BroadcastChannel", ""];
+        objects = ["ApplicationCache", "AudioTrack", "AudioTrackList", "BarProp", "BeforeUnloadEvent", "BroadcastChannel", "CanvasGradient", "CanvasPattern", "CanvasRenderingContext2D", "CloseEvent", "CustomElementRegistry", "DOMParser", "DOMStringList", "DOMStringMap", "DataTransfer", "DataTransferItem", "DataTransferItemList", "DedicatedWorkerGlobalScope", "DragEvent", "ElementInternals", "ErrorEvent", "EventSource", "External", "FormDataEvent", "HTMLAllCollection", "HTMLFormControlsCollection", "HTMLOptionsCollection", "HashChangeEvent", "History", "ImageBitmap", "ImageBitmapRenderingContext", "ImageData", "Location", "MediaError", "MessageChannel", "MessageEvent", "MessagePort", "MimeType", "MimeTypeArray", "Navigator", "OffscreenCanvas", "OffscreenCanvasRenderingContext2D", "PageTransitionEvent", "Path2D", "Plugin", "PluginArray", "PopStateEvent", "PromiseRejectionEvent", "RadioNodeList", "SharedWorker", "SharedWorkerGlobalScope", "Storage", "StorageEvent", "SubmitEvent", "TextMetrics", "TextTrack", "TextTrackCue", "TextTrackCueList", "TextTrackList", "TimeRanges", "TrackEvent", "ValidityState", "VideoTrack", "VideoTrackList", "WebSocket", "Window", "Worker", "WorkerGlobalScope", "WorkerLocation", "WorkerNavigator"];
         objects.forEach(o => interfaces.add(o));
         names = names.filter(e => !interfaces.has(e));
     }
@@ -66,7 +64,7 @@
     names = filterOut(names, ["WebGLVertexArrayObject", "WebGLTransformFeedback", "WebGLSync", "WebGLSampler", "WebGLQuery", ""]);
 
     // https://www.w3.org/TR/webaudio/
-    names = filterOut(names, ["AudioContext", "AudioNode", "AnalyserNode", "AudioBuffer", "AudioBufferSourceNode", ""]);
+    names = filterOut(names, ["AudioContext", "BaseAudioContext", "OfflineAudioContext", "AudioNode", "AnalyserNode", "AudioBuffer", "AudioBufferSourceNode", "AudioDestinationNode", "AudioParam", "AudioListener", "AudioWorklet", "AudioWorkletGlobalScope", "AudioWorkletNode", "AudioWorkletProcessor", "BiquadFilterNode", "ChannelMergerNode", "ChannelSplitterNode", "ConstantSourceNode", "ConvolverNode", "DelayNode", "DynamicsCompressorNode", "GainNode", "IIRFilterNode", "MediaElementAudioSourceNode", "MediaStreamAudioSourceNode", "MediaStreamTrackAudioSourceNode", "MediaStreamAudioDestinationNode", "PannerNode", "PeriodicWave", "OscillatorNode", "StereoPannerNode", "WaveShaperNode", "ScriptProcessorNode", "AudioProcessingEvent"]);
 
     // https://encoding.spec.whatwg.org/#dom-textencoder
     names = filterOut(names, ["TextDecoder", "TextEncoder", "TextDecoderStream", "TextEncodeStream"]);
