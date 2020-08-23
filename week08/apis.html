@@ -61,13 +61,13 @@
     names = names.filter(e => e!="Intl");
 
     // https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15
-    names = filterOut(names, ["WebGLVertexArrayObject", "WebGLTransformFeedback", "WebGLSync", "WebGLSampler", "WebGLQuery", ""]);
+    names = filterOut(names, ["WebGLVertexArrayObject", "WebGLTransformFeedback", "WebGLSync", "WebGLSampler", "WebGLQuery", "WebGL2RenderingContext", "WebGLContextEvent", "WebGLObject", "WebGLBuffer", "WebGLFramebuffer", "WebGLProgram", "WebGLRenderbuffer", "WebGLShader", "WebGLTexture", "WebGLUniformLocation", "WebGLActiveInfo", "WebGLShaderPrecisionFormat", "WebGLRenderingContext"]);
 
     // https://www.w3.org/TR/webaudio/
-    names = filterOut(names, ["AudioContext", "BaseAudioContext", "OfflineAudioContext", "AudioNode", "AnalyserNode", "AudioBuffer", "AudioBufferSourceNode", "AudioDestinationNode", "AudioParam", "AudioListener", "AudioWorklet", "AudioWorkletGlobalScope", "AudioWorkletNode", "AudioWorkletProcessor", "BiquadFilterNode", "ChannelMergerNode", "ChannelSplitterNode", "ConstantSourceNode", "ConvolverNode", "DelayNode", "DynamicsCompressorNode", "GainNode", "IIRFilterNode", "MediaElementAudioSourceNode", "MediaStreamAudioSourceNode", "MediaStreamTrackAudioSourceNode", "MediaStreamAudioDestinationNode", "PannerNode", "PeriodicWave", "OscillatorNode", "StereoPannerNode", "WaveShaperNode", "ScriptProcessorNode", "AudioProcessingEvent"]);
+    names = filterOut(names, ["AudioContext", "BaseAudioContext", "OfflineAudioContext", "AudioNode", "AnalyserNode", "AudioBuffer", "AudioBufferSourceNode", "AudioDestinationNode", "AudioParam", "AudioListener", "AudioWorklet", "AudioWorkletGlobalScope", "AudioWorkletNode", "AudioWorkletProcessor", "BiquadFilterNode", "ChannelMergerNode", "ChannelSplitterNode", "ConstantSourceNode", "ConvolverNode", "DelayNode", "DynamicsCompressorNode", "GainNode", "IIRFilterNode", "MediaElementAudioSourceNode", "MediaStreamAudioSourceNode", "MediaStreamTrackAudioSourceNode", "MediaStreamAudioDestinationNode", "PannerNode", "PeriodicWave", "OscillatorNode", "StereoPannerNode", "WaveShaperNode", "ScriptProcessorNode", "AudioProcessingEvent", "AudioScheduledSourceNode"]);
 
     // https://encoding.spec.whatwg.org/#dom-textencoder
-    names = filterOut(names, ["TextDecoder", "TextEncoder", "TextDecoderStream", "TextEncodeStream"]);
+    names = filterOut(names, ["TextDecoder", "TextEncoder", "TextDecoderStream", "TextEncoderStream"]);
 
     // https://streams.spec.whatwg.org/#blqs-class
     names = filterOut(names, ["ReadableStream", "ReadableStreamDefaultReader", "ReadableStreamBYOBReader", "ReadableStreamDefaultControll"]);
@@ -75,7 +75,50 @@
     // https://wicg.github.io/BackgroundSync/spec/#sync-manager-interface
     names = filterOut(names, ["SyncManager"]);
 
+    // https://url.spec.whatwg.org/#api
+    names = filterOut(names, ["URL", "URLSearchParams"]);
+
+    // https://w3c.github.io/uievents/
+    names = filterOut(names, ["Event", "EventTarget", "CustomEvent", "UIEvent", "FocusEvent", "MouseEvent", "KeyboardEvent", "CompositionEvent", "WheelEvent", "InputEvent", "MutationEvent"]);
+
+    // WebRTC_API
+    names = filterOut(names, ["RTCPeerConnection", "RTCSessionDescription", "RTCIceCandidate", "RTCPeerConnectionIceEvent", "RTCPeerConnectionIceErrorEvent", "RTCCertificate", "RTCRtpSender", "RTCRtpReceiver", "RTCRtpTransceiver", "RTCDtlsTransport", "RTCIceTransport", "RTCTrackEvent", "RTCSctpTransport", "RTCDataChannel", "RTCDataChannelEvent", "RTCDTMFSender", "RTCDTMFToneChangeEvent", "RTCStatsReport", "RTCErrorEvent", "RTCError"]);
+
+    // CSSOM
+    names = filterOut(names, ["AnimationEvent", "CaretPosition", "CSS", "CSSCharsetRule", "CSSConditionRule", "CSSCounterStyleRule", "CSSFontFaceRule", "CSSFontFeatureValuesMap", "CSSFontFeatureValuesRule", "CSSGroupingRule", "CSSImportRule", "CSSKeyframeRule", "CSSKeyframesRule", "CSSMarginRule", "CSSMediaRule", "CSSNamespaceRule", "CSSPageRule", "CSSRule", "CSSRuleList", "CSSStyleDeclaration", "CSSStyleSheet", "CSSStyleRule", "CSSSupportsRule", "CSSVariablesMap", "CSSViewportRule", "ElementCSSInlineStyle", "FontFace", "FontFaceSet", "FontFaceSetLoadEvent", "GeometryUtils", "GetStyleUtils", "LinkStyle", "MediaList", "MediaQueryList", "MediaQueryListEvent", "MediaQueryListListener", "Screen", "StyleSheet", "StyleSheetList", "TransitionEvent", "CSSImageValue", "CSSKeywordValue", "CSSMathInvert", "CSSMathMax", "CSSMathMin", "CSSMathNegate", "CSSMathProduct", "CSSMathSum", "CSSMathValue", "CSSMatrixComponent", "CSSNumericArray", "CSSNumericValue", "CSSPerspective", "CSSPositionValue", "CSSRotate", "CSSScale", "CSSSkew", "CSSSkewX", "CSSSkewY", "CSSStyleValue", "CSSTransformComponent", "CSSTransformValue", "CSSTranslate", "CSSUnitValue", "CSSUnparsedValue", "CSSVariableReferenceValue", "StylePropertyMap", "StylePropertyMapReadOnly"]);
+
+    // WebXR Device
+    names = filterOut(names, ["XR", "XRSystem", "XRFrame", "XRRenderState", "XRSession", "XRSpace", "XRReferenceSpace", "XRBoundedReferenceSpace", "XRView", "XRViewport", "XRRigidTransform", "XRPose", "XRViewerPose", "XRInputSource", "XRInputSourceArray", "XRWebGLLayer", "XRInputSourceEvent", "XRInputSourcesChangeEvent", "XRReferenceSpaceEvent", "XRSessionEvent"]);
+
+    // https://wicg.github.io/webusb/#events
+    names = filterOut(names, ["USB", "USBConnectionEvent", "USBDevice", "USBInTransferResult", "USBOutTransferResult", "USBIsochronousInTransferPacket", "USBIsochronousInTransferResult", "USBIsochronousOutTransferPacket", "USBIsochronousOutTransferResult", "USBConfiguration", "USBInterface", "USBAlternateInterface", "USBEndpoint"]);
+
+    // https://www.w3.org/TR/SVG11/coords.html#DOMInterfaces
+    names = filterOut(names, ["SVGPoint", "SVGPointList", "SVGMatrix", "SVGTransform", "SVGTransformList", "SVGAnimatedTransformList", "SVGPreserveAspectRatio", "SVGAnimatedPreserveAspectRatio"]);
+
+    // https://w3c.github.io/mediacapture-main/#dom-mediastream
+    names = filterOut(names, ["MediaStream", "MediaStreamTrack", "MediaStreamTrackEvent", "MediaDevices", "MediaDeviceInfo", "InputDeviceInfo"]);
+
+    // https://w3c.github.io/mediacapture-record/#mediarecorder-api
+    names = filterOut(names, ["MediaRecorder", "BlobEvent", "MediaRecorderErrorEvent"]);
+
+    // https://w3c.github.io/media-capabilities/#mediacapabilities
+    names = filterOut(names, ["MediaCapabilities"]);
+
+    // https://w3c.github.io/IndexedDB/#request-api
+    names = filterOut(names, ["IDBRequest", "IDBOpenDBRequest", "IDBVersionChangeEvent", "IDBFactory", "IDBDatabase", "IDBObjectStore", "IDBIndex", "IDBKeyRange", "IDBCursor", "IDBCursorWithValue", "IDBTransaction"]);
+
+    // https://w3c.github.io/gamepad/#gamepad-interface
+    names = filterOut(names, ["Gamepad", "GamepadButton", "GamepadEvent"]);
+
+    // https://xhr.spec.whatwg.org/#interface-xmlhttprequest
+    names = filterOut(names, ["XMLHttpRequestEventTarget", "XMLHttpRequestUpload", "XMLHttpRequest", "FormData", "ProgressEvent"]);
+
+    // https://drafts.fxtf.org/geometry/#DOMPoint
+    names = filterOut(names, ["DOMPointReadOnly", "DOMPoint", "DOMRectReadOnly", "DOMRect", "DOMRectList", "DOMQuad", "DOMMatrixReadOnly", "DOMMatrix"]);
+
     console.log(names.length);
     console.log(names);
+    console.log(JSON.stringify(names));
 
 </script>
