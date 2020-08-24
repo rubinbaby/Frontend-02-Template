@@ -63,10 +63,10 @@
     // https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15
     names = filterOut(names, ["WebGLVertexArrayObject", "WebGLTransformFeedback", "WebGLSync", "WebGLSampler", "WebGLQuery", "WebGL2RenderingContext", "WebGLContextEvent", "WebGLObject", "WebGLBuffer", "WebGLFramebuffer", "WebGLProgram", "WebGLRenderbuffer", "WebGLShader", "WebGLTexture", "WebGLUniformLocation", "WebGLActiveInfo", "WebGLShaderPrecisionFormat", "WebGLRenderingContext"]);
 
-    // https://www.w3.org/TR/webaudio/
-    names = filterOut(names, ["AudioContext", "BaseAudioContext", "OfflineAudioContext", "AudioNode", "AnalyserNode", "AudioBuffer", "AudioBufferSourceNode", "AudioDestinationNode", "AudioParam", "AudioListener", "AudioWorklet", "AudioWorkletGlobalScope", "AudioWorkletNode", "AudioWorkletProcessor", "BiquadFilterNode", "ChannelMergerNode", "ChannelSplitterNode", "ConstantSourceNode", "ConvolverNode", "DelayNode", "DynamicsCompressorNode", "GainNode", "IIRFilterNode", "MediaElementAudioSourceNode", "MediaStreamAudioSourceNode", "MediaStreamTrackAudioSourceNode", "MediaStreamAudioDestinationNode", "PannerNode", "PeriodicWave", "OscillatorNode", "StereoPannerNode", "WaveShaperNode", "ScriptProcessorNode", "AudioProcessingEvent", "AudioScheduledSourceNode"]);
+    // https://webaudio.github.io/web-audio-api/
+    names = filterOut(names, ["AudioContext", "BaseAudioContext", "OfflineAudioContext", "OfflineAudioCompletionEvent", "AudioNode", "AnalyserNode", "AudioBuffer", "AudioBufferSourceNode", "AudioDestinationNode", "AudioParam", "AudioListener", "AudioWorklet", "AudioWorkletGlobalScope", "AudioWorkletNode", "AudioWorkletProcessor", "BiquadFilterNode", "ChannelMergerNode", "ChannelSplitterNode", "ConstantSourceNode", "ConvolverNode", "DelayNode", "DynamicsCompressorNode", "GainNode", "IIRFilterNode", "MediaElementAudioSourceNode", "MediaStreamAudioSourceNode", "MediaStreamTrackAudioSourceNode", "MediaStreamAudioDestinationNode", "PannerNode", "PeriodicWave", "OscillatorNode", "StereoPannerNode", "WaveShaperNode", "ScriptProcessorNode", "AudioProcessingEvent", "AudioScheduledSourceNode", "AudioParamMap"]);
 
-    // https://encoding.spec.whatwg.org/#dom-textencoder
+    // https://encoding.spec.whatwg.org/
     names = filterOut(names, ["TextDecoder", "TextEncoder", "TextDecoderStream", "TextEncoderStream"]);
 
     // https://streams.spec.whatwg.org/#blqs-class
@@ -96,26 +96,35 @@
     // https://www.w3.org/TR/SVG11/coords.html#DOMInterfaces
     names = filterOut(names, ["SVGPoint", "SVGPointList", "SVGMatrix", "SVGTransform", "SVGTransformList", "SVGAnimatedTransformList", "SVGPreserveAspectRatio", "SVGAnimatedPreserveAspectRatio"]);
 
-    // https://w3c.github.io/mediacapture-main/#dom-mediastream
-    names = filterOut(names, ["MediaStream", "MediaStreamTrack", "MediaStreamTrackEvent", "MediaDevices", "MediaDeviceInfo", "InputDeviceInfo"]);
+    // https://w3c.github.io/mediacapture-main/
+    names = filterOut(names, ["MediaStream", "MediaStreamTrack", "MediaStreamTrackEvent", "MediaDevices", "MediaDeviceInfo", "InputDeviceInfo", "OverconstrainedError"]);
 
-    // https://w3c.github.io/mediacapture-record/#mediarecorder-api
+    // https://w3c.github.io/mediacapture-record/
     names = filterOut(names, ["MediaRecorder", "BlobEvent", "MediaRecorderErrorEvent"]);
 
-    // https://w3c.github.io/media-capabilities/#mediacapabilities
+    // https://w3c.github.io/media-capabilities/
     names = filterOut(names, ["MediaCapabilities"]);
 
-    // https://w3c.github.io/IndexedDB/#request-api
+    // https://w3c.github.io/IndexedDB/
     names = filterOut(names, ["IDBRequest", "IDBOpenDBRequest", "IDBVersionChangeEvent", "IDBFactory", "IDBDatabase", "IDBObjectStore", "IDBIndex", "IDBKeyRange", "IDBCursor", "IDBCursorWithValue", "IDBTransaction"]);
 
-    // https://w3c.github.io/gamepad/#gamepad-interface
+    // https://w3c.github.io/gamepad/
     names = filterOut(names, ["Gamepad", "GamepadButton", "GamepadEvent"]);
 
-    // https://xhr.spec.whatwg.org/#interface-xmlhttprequest
+    // https://xhr.spec.whatwg.org/
     names = filterOut(names, ["XMLHttpRequestEventTarget", "XMLHttpRequestUpload", "XMLHttpRequest", "FormData", "ProgressEvent"]);
 
-    // https://drafts.fxtf.org/geometry/#DOMPoint
+    // https://drafts.fxtf.org/geometry/
     names = filterOut(names, ["DOMPointReadOnly", "DOMPoint", "DOMRectReadOnly", "DOMRect", "DOMRectList", "DOMQuad", "DOMMatrixReadOnly", "DOMMatrix"]);
+
+    // https://w3c.github.io/media-source/
+    names = filterOut(names, ["MediaSource", "SourceBuffer", "SourceBufferList"]);
+
+    // https://w3c.github.io/screen-orientation/
+    names = filterOut(names, ["ScreenOrientation"]);
+
+    // https://w3c.github.io/mediacapture-image/
+    names = filterOut(names, ["ImageCapture", "PhotoCapabilities", "PhotoSettings", "MediaSettingsRange"]);
 
     console.log(names.length);
     console.log(names);
