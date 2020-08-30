@@ -75,14 +75,14 @@
     // https://wicg.github.io/BackgroundSync/spec/#sync-manager-interface
     names = filterOut(names, ["SyncManager"]);
 
-    // https://url.spec.whatwg.org/#api
+    // https://url.spec.whatwg.org/
     names = filterOut(names, ["URL", "URLSearchParams"]);
 
-    // https://w3c.github.io/uievents/
-    names = filterOut(names, ["Event", "EventTarget", "CustomEvent", "UIEvent", "FocusEvent", "MouseEvent", "KeyboardEvent", "CompositionEvent", "WheelEvent", "InputEvent", "MutationEvent"]);
+    // https://dom.spec.whatwg.org/
+    names = filterOut(names, ["Event", "EventTarget", "CustomEvent", "UIEvent", "FocusEvent", "MouseEvent", "KeyboardEvent", "CompositionEvent", "WheelEvent", "InputEvent", "MutationEvent", "AbortController", "AbortSignal", "NodeList", "HTMLCollection", "MutationObserver", "MutationRecord", ""]);
 
     // WebRTC_API
-    names = filterOut(names, ["RTCPeerConnection", "RTCSessionDescription", "RTCIceCandidate", "RTCPeerConnectionIceEvent", "RTCPeerConnectionIceErrorEvent", "RTCCertificate", "RTCRtpSender", "RTCRtpReceiver", "RTCRtpTransceiver", "RTCDtlsTransport", "RTCIceTransport", "RTCTrackEvent", "RTCSctpTransport", "RTCDataChannel", "RTCDataChannelEvent", "RTCDTMFSender", "RTCDTMFToneChangeEvent", "RTCStatsReport", "RTCErrorEvent", "RTCError"]);
+    names = filterOut(names, ["RTCPeerConnection", "RTCSessionDescription", "RTCIceCandidate", "RTCPeerConnectionIceEvent", "RTCPeerConnectionIceErrorEvent", "RTCCertificate", "RTCRtpSender", "RTCRtpReceiver", "RTCRtpTransceiver", "RTCDtlsTransport", "RTCIceTransport", "RTCTrackEvent", "RTCSctpTransport", "RTCDataChannel", "RTCDataChannelEvent", "RTCDTMFSender", "RTCDTMFToneChangeEvent", "RTCStatsReport", "RTCErrorEvent", "RTCError", "MediaStreamEvent"]);
 
     // CSSOM
     names = filterOut(names, ["AnimationEvent", "CaretPosition", "CSS", "CSSCharsetRule", "CSSConditionRule", "CSSCounterStyleRule", "CSSFontFaceRule", "CSSFontFeatureValuesMap", "CSSFontFeatureValuesRule", "CSSGroupingRule", "CSSImportRule", "CSSKeyframeRule", "CSSKeyframesRule", "CSSMarginRule", "CSSMediaRule", "CSSNamespaceRule", "CSSPageRule", "CSSRule", "CSSRuleList", "CSSStyleDeclaration", "CSSStyleSheet", "CSSStyleRule", "CSSSupportsRule", "CSSVariablesMap", "CSSViewportRule", "ElementCSSInlineStyle", "FontFace", "FontFaceSet", "FontFaceSetLoadEvent", "GeometryUtils", "GetStyleUtils", "LinkStyle", "MediaList", "MediaQueryList", "MediaQueryListEvent", "MediaQueryListListener", "Screen", "StyleSheet", "StyleSheetList", "TransitionEvent", "CSSImageValue", "CSSKeywordValue", "CSSMathInvert", "CSSMathMax", "CSSMathMin", "CSSMathNegate", "CSSMathProduct", "CSSMathSum", "CSSMathValue", "CSSMatrixComponent", "CSSNumericArray", "CSSNumericValue", "CSSPerspective", "CSSPositionValue", "CSSRotate", "CSSScale", "CSSSkew", "CSSSkewX", "CSSSkewY", "CSSStyleValue", "CSSTransformComponent", "CSSTransformValue", "CSSTranslate", "CSSUnitValue", "CSSUnparsedValue", "CSSVariableReferenceValue", "StylePropertyMap", "StylePropertyMapReadOnly"]);
@@ -109,7 +109,7 @@
     names = filterOut(names, ["IDBRequest", "IDBOpenDBRequest", "IDBVersionChangeEvent", "IDBFactory", "IDBDatabase", "IDBObjectStore", "IDBIndex", "IDBKeyRange", "IDBCursor", "IDBCursorWithValue", "IDBTransaction"]);
 
     // https://w3c.github.io/gamepad/
-    names = filterOut(names, ["Gamepad", "GamepadButton", "GamepadEvent"]);
+    names = filterOut(names, ["Gamepad", "GamepadButton", "GamepadEvent", "GamepadHapticActuator"]);
 
     // https://xhr.spec.whatwg.org/
     names = filterOut(names, ["XMLHttpRequestEventTarget", "XMLHttpRequestUpload", "XMLHttpRequest", "FormData", "ProgressEvent"]);
@@ -125,6 +125,12 @@
 
     // https://w3c.github.io/mediacapture-image/
     names = filterOut(names, ["ImageCapture", "PhotoCapabilities", "PhotoSettings", "MediaSettingsRange"]);
+
+    // https://wicg.github.io/netinfo/
+    names = filterOut(names, ["NetworkInformation"]);
+
+    // https://w3c.github.io/geolocation-api/
+    names = filterOut(names, ["Geolocation", "GeolocationPosition", "GeolocationPositionError", "GeolocationCoordinates"]);
 
     console.log(names.length);
     console.log(names);
