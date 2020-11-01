@@ -94,7 +94,11 @@ function tagOpen(c){
         }
         return tagName(c);
     }else{
-        return ;
+        emit({
+            type: "text",
+            content: c
+        });
+        return data;
     }
 }
 
@@ -122,7 +126,7 @@ function tagName(c){
         return beforeAttributeName;
     }else if(c === "/"){
         return selfClosingStartTag;
-    }else if(c.match(/^[a-zA-Z]$/)){
+    }else if(c.match(/^[A-Z]$/)){
         // 18-01
         currentToken.tagName += c;
         return tagName;
@@ -131,6 +135,7 @@ function tagName(c){
         emit(currentToken);
         return data;
     }else{
+        currentToken.tagName += c;
         return tagName;
     }
 }
@@ -142,7 +147,7 @@ function beforeAttributeName(c){
     }else if(c === "/" || c === ">" || c === EOF){ // 19-01
         return afterAttributeName(c);
     }else if(c === "="){
-        return beforeAttributeName;
+        // return beforeAttributeName;
     }else{
         // 19-01
         currentAttribute = {
@@ -202,7 +207,7 @@ function doubleQuotedAttributeValue(c){
 // 19-01
 function singleQuotedAttributeValue(c){
     if(c === "\'"){
-        currentToken[currentAttribute.name] = currentAttribute;
+        currentToken[currentAttribute.name] = currentAttribute.value;
         return afterQuotedAttributeValue;
     }else if(c === "\u0000"){
 
@@ -227,12 +232,7 @@ function afterQuotedAttributeValue(c){
     }else if(c === EOF){
 
     }else{
-        currentAttribute.value += c;
-        if(c === "\""){
-            return doubleQuotedAttributeValue;
-        }else if(c === "\'"){
-            return singleQuotedAttributeValue;
-        }
+        throw new Error("unexpected character \"" + c +"\"");
     }
 }
 
@@ -289,6 +289,7 @@ function selfClosingStartTag(c){
     if(c === ">"){
         // 18-01
         currentToken.isSelfClosing = true;
+        emit(currentToken);
         return data;
     }else if(c === "EOF"){
 

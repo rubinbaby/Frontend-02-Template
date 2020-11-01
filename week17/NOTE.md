@@ -18,11 +18,11 @@
       - npm install --save-dev @istanbuljs/nyc-config-babel
       - npm install --save-dev babel-plugin-istanbul
   ### 1.3 对html-parser进行单元测试
-   - 完全独立于webpack的一套独立系统
-   - 作用：新版本的JS编译成老版本的JS
-   - 命令中需要输入和输出
-   - 安装：npm install --save-dev @babel/core @babel/cli
-   - 通过npx babel来使用
+   - coverage的描述要区分大小写
+   - 常用命令：
+      - npm run test
+      - npm run coverage
+      - npm run build
 
   ### Notes
    - 问题：SyntaxError: Unexpected reserved word
