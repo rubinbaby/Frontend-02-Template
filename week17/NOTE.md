@@ -23,3 +23,7 @@
    - 命令中需要输入和输出
    - 安装：npm install --save-dev @babel/core @babel/cli
    - 通过npx babel来使用
+
+  ### Notes
+   - 问题：SyntaxError: Unexpected reserved word
+      - 解答：升级node版本到v10.x 
